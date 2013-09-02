@@ -319,6 +319,9 @@ evenFooterMarkup = \oddFooterMarkup
       \set Timing.beatStructure = #'(1 1 1 1)
       \set Timing.beamExceptions = #'()
       \set Score.currentBarNumber = #2
+      \once \override Score.RehearsalMark #'font-size = #-3
+      \once \override Score.RehearsalMark #'extra-offset = #'(0.8 . -20.5)
+      \mark \markup { \musicglyph #"scripts.segno" }
       a,8
       g 
       a\4-\mkTweak #-0.3 #2.9 -\rhp -\mkTweak #1 #4.9 -\lhtwo
