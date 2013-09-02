@@ -309,8 +309,9 @@ evenFooterMarkup = \oddFooterMarkup
         \break
       \revert Score.TimeSignature #'stencil
       \time 4/4
-      s4\stopTextSpan
-      c''4-\lhone
+      s4\stopTextSpan-\mkTweak #-0.8 #1.3 -\rhp -\mkTweak #-0.8 #-3.5 ^\rhi
+      -\mkTweak #-0.8 #-3.4 ^\rhm -\mkTweak #-0.8 #-3.2 ^\rha
+      c''4-\mkTweak #0.2 #-1 ^\lhone
       \cadenzaOff
       \bar "|"
       % Bar 2
@@ -320,39 +321,43 @@ evenFooterMarkup = \oddFooterMarkup
       \set Score.currentBarNumber = #2
       a,8
       g 
-      a\4-\rhp -\lhtwo
+      a\4-\mkTweak #-0.3 #2.9 -\rhp -\mkTweak #1 #4.9 -\lhtwo
       c' 
-      < d'' a, >-\lhfour \glissando 
+      < d'' a, >-\mkTweak #0.2 #-1 ^\lhfour \glissando 
       e'' 
-      b4\4-\lhthree \glissando |
+      b4\4-\mkTweak #1.3 #3.6 -\lhthree \glissando |
       % Bar 3
-      \stemDown \slashedGrace { 
+      \stemDown 
+      \once\override Stem #'length = #'3
+      \slashedGrace { 
         g8\4 } 
-      < a, b'\1 \invTNH a'\1 >8 -\rhp -\lhfour ~
-      a'\1-\lhone
+      < a, b'\1 \invTNH a'\1 >8 -\mkTweak #-0.1 #1.9 -\rhp -\mkTweak #0.2 #-0.8 ^\lhfour ~
+      a'\1-\mkTweak #1.0 #-1.5 ^\lhone
       g\4 
-      g'\2-\lhfour 
+      g'\2-\mkTweak #0.2 #-1.2 ^\lhfour 
       a, 
       e' 
-      < g\4 c'\3>4-\lhone |
+      < g\4 c'\3>4-\mkTweak #1 #5.6 -\lhone |
       % Bar 4
-      d,4-\rhp
-      < a\4 d'\3>-\rhp -\lhguideone -\lhguidethree
+      d,4-\mkTweak #-0.2 #2.8 -\rhp
+      < a\4 d'\3>-\mkTweak #-0.2 #3.45 -\rhp 
+      -\mkTweak #1 #5.5 -\lhguideone -\mkTweak #1 #5.8 -\lhguidethree
       \revert Script #'padding 
-      d,8\staccato-\rhp
-      c'-\rhp
-      < f\5 d'\3 >-\lhthree
+      d,8\staccato-\mkTweak #-0.2 #2.9 -\rhp
+      c'-\mkTweak #-2 #3.9 -\rhp
+      < f\5 d'\3 >-\mkTweak #1 #4.6 -\lhthree
       e' |
       \break
       % Bar 5
       d,8 
       d'\3 
-      \harmonicByRatio #1/3 g\4-\lhtwo
+      \harmonicByRatio #1/3 g\4-\mkTweak #1.2 #4 -\lhtwo
       c' 
       d, 
       d'\3 
-      e'-\rhp 
-      c''-\rha -\lhone |
+      e'-\mkTweak #-0.5 #3.5 -\rhp 
+      c''-\mkTweak #-0.3 #8.3 -\rha 
+      -\mkTweak #1 #9.4 -\lhone |
       % Bar 6
       a,8
       g 
@@ -362,10 +367,12 @@ evenFooterMarkup = \oddFooterMarkup
       e'' 
       b4\4 \glissando |
       % Bar 7
-      \stemDown \slashedGrace { 
+      \stemDown 
+      \once\override Stem #'length = #'3
+      \slashedGrace { 
         g8\4 } 
-      < a, b' >8-\rhp
-      a' 
+      < a, b'\1 >8-\mkTweak #-0.1 #1.9 -\rhp ~
+      < \invTNH b'\1 a'\1> 
       g\4 
       g'\2 
       a, 
@@ -386,22 +393,23 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextSpanner #'outside-staff-priority = ##f
     \tsMove #0 #-1.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4\stopTextSpan
     s4 s4 s4 
-    \strDampening s4\startTextSpan s4\stopTextSpan 
+    \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4\stopTextSpan 
     % Bar 2 
-    s8 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
+    s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
     % Bar 3
-    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan \strDampening
+    s4 s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan \tsMove #0 #-1.1 \strDampening
     s8\startTextSpan s8 |
     % Bar 4
     s4 s4 s4 s8 s8\stopTextSpan |
     % Bar 5
-    s4 \strDampening s4\startTextSpan s4 s8\stopTextSpan s8 |
+    s4 \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4 s8\stopTextSpan s8 |
     % Bar 6
-    s4 \strDampening s4\startTextSpan s4\stopTextSpan s4 |
+    s4 \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4\stopTextSpan s4 |
     % Bar 7
-    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan s8 \strDampening
-       \override TextSpanner #'after-line-breaking =
-  #ly:spanner::kill-zero-spanned-time \endSpanners  
+    s4 s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan s8
+    \tsMove #-0.03 #-1.1 \strDampening
+    \override TextSpanner #'after-line-breaking =
+    #ly:spanner::kill-zero-spanned-time \endSpanners  
     s8\startTextSpan |
     % Bar 8
     s8 
@@ -413,22 +421,22 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
     \tsMove #0 #-2.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4 s4\stopTextSpan s4 s4
-    \strDampening s4\startTextSpan s4
+    \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4
     % Bar 2
-    s4 s8 s8\stopTextSpan \strDampening s4\startTextSpan s4 |
+    s4 s8 s8\stopTextSpan \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4 |
     % Bar 3
-    s4 s8 s8\stopTextSpan s8 \strDampening s8\startTextSpan s4 |
+    s4 s8 s8\stopTextSpan s8 \tsMove #0 #-2.1 \strDampening s8\startTextSpan s4 |
     % Bar 4
     s4 s4 s8  s8\stopTextSpan \override TextSpanner #'after-line-breaking =
-  #ly:spanner::kill-zero-spanned-time \endSpanners \strDampening s4 |
+  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.1 \strDampening s4 |
   % Bar 5
-  \strDampening s4\startTextSpan s8 s8\stopTextSpan s8 \strDampening
+  \tsMove #0 #-2.1 \strDampening s4\startTextSpan s8 s8\stopTextSpan s8 \tsMove #0 #-2.1 \strDampening
   s8\startTextSpan s4 |
   % Bar 6
-  s4 s8 s8\stopTextSpan \strDampening s4\startTextSpan s4 |
+  s4 s8 s8\stopTextSpan \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4 |
   % Bar 7
   s4 s8 s8\stopTextSpan s8 \override TextSpanner #'after-line-breaking =
-  #ly:spanner::kill-zero-spanned-time \endSpanners \strDampening s8\startTextSpan s4 |
+  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.1 \strDampening s8\startTextSpan s4 |
   % Bar 8
   s4\stopTextSpan
 
@@ -442,18 +450,18 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextSpanner #'outside-staff-priority = ##f
     \tsMove #0 #-3.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s4 s4\stopTextSpan
     s2 s2 
-    \strDampening s4\startTextSpan s4 
+    \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 
     % Bar 2
-    s8 s8\stopTextSpan s4 \strDampening s4\startTextSpan s4 |
+    s8 s8\stopTextSpan s4 \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 |
     % Bar 3
     s4 s4 s4 s4\stopTextSpan |
     % Bar 4
-    \strDampening s4\startTextSpan s4\stopTextSpan s4 s4 |
+    \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4\stopTextSpan s4 s4 |
     % Bar 5
-    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan \strDampening
+    s4 s8 \tsMove #0 #-3.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan \tsMove #0 #-3.1 \strDampening
     s8\startTextSpan s8 |
     % Bar 6
-    s8 s8\stopTextSpan s4 \strDampening s4\startTextSpan s4 |
+    s8 s8\stopTextSpan s4 \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 |
     % Bar 7
     s4 s4 s4 s8 s8\stopTextSpan |
   }
@@ -471,15 +479,15 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
     s1 s1 s1 s1 s2 
-    \strDampening s4\startTextSpan s4 
+    \tsMove #0 #-5.1 \strDampening s4\startTextSpan s4 
     % Bar 2
     s4\stopTextSpan s2. |
     % Bar 3
     s1
     % Bar 4
-    s2 s16 \textSpannerDown \twoStrDamp s16\startTextSpan s8 s4\stopTextSpan |
+    s2 s16 \textSpannerDown \tsMove #-0.03 #2.1 \twoStrDamp s16\startTextSpan s8 s4\stopTextSpan |
     % Bar 5
-    s2. \twoStrDamp s4\startTextSpan |
+    s2. \tsMove #-0.03 #2.1 \twoStrDamp s4\startTextSpan |
     % Bar 6
     s4\stopTextSpan 
   }
@@ -495,9 +503,9 @@ evenFooterMarkup = \oddFooterMarkup
     % Bar 3
     s1 
     % Bar 4
-    s4 s4 s16 \strDampening s16\startTextSpan s8 s4\stopTextSpan |
+    s4 s4 s16 \tsMove #0 #-6.1 \strDampening s16\startTextSpan s8 s4\stopTextSpan |
     % Bar 5
-    s2 s4 \strDampening s4\startTextSpan |
+    s2 s4 \tsMove #0 #-6.1 \strDampening s4\startTextSpan |
     % Bar 6
     s4\stopTextSpan
   }
