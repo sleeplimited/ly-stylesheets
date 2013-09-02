@@ -140,7 +140,7 @@ evenFooterMarkup = \oddFooterMarkup
     \once \override Score.KeySignature #'break-align-anchor = #3.5
     \once \override Score.RehearsalMark #'extra-offset = #'(0 . 2)
     \mark \markup  { \fontsize #-4 \concat {
-      \fontsize #0 { \note #"4" #1 }"  " \char ##x2248 \bold \italic "  80"
+      \fontsize #0 { \note #"4" #1 }" " \char ##x2248 \fontsize #-4 \number " 80"
     }}
     \key c \major
     % Bar 1
@@ -161,8 +161,15 @@ evenFooterMarkup = \oddFooterMarkup
       b''2\fermata
       \revert Voice.NoteHead #'style
       \override Score.MetronomeMark #'padding = #3
-      \set Score.tempoHideNote = ##f
+      \set Score.tempoHideNote = ##t
       \tempo 4 = 176
+    \override Score.RehearsalMark #'break-align-symbols = #'(key-signature)
+    \once \override Score.KeySignature #'break-align-anchor = #3.5
+    \once \override Score.RehearsalMark #'extra-offset = #'(8 . 2)
+    \mark \markup  { \fontsize #-4 \concat {
+      \fontsize #0 { \note #"4" #1 }" =" \fontsize #-4 \number " 176"
+    }}
+      s4 
       << { \stemDown c''4~
       % Bar 2
       \stemUp c''8 r4. d''8 e'' r4 |
@@ -209,6 +216,7 @@ evenFooterMarkup = \oddFooterMarkup
     s2 s2 s2 s2 s2 s2 s2 s2 
     \once\override Script #'direction = #-1 f,2\fermata 
     s4
+    s4
     % Bar 2
     a,2 a, |
     % Bar 3
@@ -251,31 +259,58 @@ evenFooterMarkup = \oddFooterMarkup
     % bar 1
       \override Score.TimeSignature #'stencil = ##f
       \cadenzaOn
+        \override TextSpanner #'outside-staff-priority = ##f
+        \once\override TextSpanner #'style = #'solid 
+        \once\override Voice.TextSpanner #'thickness = #'0.1
+        \once\override TextSpanner #'outside-staff-priority = #'0
+        \once\override TextSpanner #'staff-padding = #'0
+        \once\override Voice.TextSpanner #'font-size = #'-5
+        \once \override TextSpanner #'(bound-details left stencil-align-dir-y) = #CENTER
+        \override TextSpanner #'after-line-breaking =
+        #ly:spanner::kill-zero-spanned-time \endSpanners  
+        \once\override TextSpanner #'(bound-details left text) = #"l.v. "
+        \once\override TextSpanner #'(bound-details right text) = \markup {
+        \draw-line #'(0 . -0.5) }
 
-        \harmonicByRatio #1/4 d'4\6-\rhp -\lhone ^\rhi ^\rhm ^\rha ~ 
+        \tsMove #-1.0 #-0.3 \harmonicByRatio #1/4 d'4\6-\mkTweak #-0.5 #2.8 -\rhp -\mkTweak #-0.8
+        #4.81 -\lhone -\mkTweak #-0.6 #-5.6 ^\rhi -\mkTweak #-0.6 #-5.5 ^\rhm -\mkTweak #-0.6 #-5.3 ^\rha
+        \startTextSpan ~ 
         \harmonicByRatio #1/4 d'\6
-        \harmonicByRatio #1/3 e'\5-\rhp -\lhthree ~
+        \harmonicByRatio #1/3 e'\5-\mkTweak #-0.5 #3.1 -\rhp \mkTweak #-0.8
+        #5.18 -\lhthree ~
         \override Script #'padding = #1
         \harmonicByRatio #1/3 e'\5\fermata
-        \harmonicByRatio #1/4 d'\6-\rhp -\lhone
-        \harmonicByRatio #1/3 e'\5-\rhp -\lhthree
-        \harmonicByRatio #1/3 g'\4-\rhp -\lhthree ~
+        \harmonicByRatio #1/4 d'\6-\mkTweak #-0.5 #2.8 -\rhp -\mkTweak #1.2 #4.8 -\lhone
+        \harmonicByRatio #1/3 e'\5-\mkTweak #-0.5 #3.1 -\rhp -\mkTweak #1.2
+        #5.12 -\lhthree
+        \harmonicByRatio #1/3 g'\4-\mkTweak #-0.5 #3.4 -\rhp -\mkTweak #-1.0
+        #5.4 -\lhthree ~
         \harmonicByRatio #1/3 g'\4\fermata
-        \harmonicByRatio #1/4 d'\6-\lhone 
-        \harmonicByRatio #1/3 e'\5-\lhthree
-        \harmonicByRatio #1/3 g'\4-\lhthree
-        \harmonicByRatio #1/4 a'\5-\lhthree
-        \harmonicByRatio #1/4 c'\4-\lhthree
-        \harmonicByRatio #1/3 d''\3-\lhthree
-        \harmonicByRatio #1/2 e''\1-\lhfour
-        \harmonicByRatio #1/3 g''\2-\lhfour
-        \tieUp < f,\6 b'\harmonic >-\lhone -\lhfour~
+        \harmonicByRatio #1/4 d'\6-\mkTweak #1.2 #3.9 -\lhone 
+        \harmonicByRatio #1/3 e'\5
+        -\mkTweak #1.2 #4.2 -\lhthree
+        \harmonicByRatio #1/3 g'\4
+        -\mkTweak #1.2 #4.6 -\lhthree
+        \harmonicByRatio #1/4 a'\5
+        -\mkTweak #1.2 #4.2 -\lhthree
+        \harmonicByRatio #1/4 c'\4
+        -\mkTweak #1.2 #4.6 -\lhthree
+        \harmonicByRatio #1/3 d''\3
+        -\mkTweak #1.2 #4.73 -\lhthree
+        \harmonicByRatio #1/2 e''\1
+        -\mkTweak #1.5 #6.5 -\lhfour
+        \harmonicByRatio #1/3 g''\2
+        -\mkTweak #0.2 #6.5 -\lhfour
+        \tieUp < f,\6 b'\harmonic >
+        -\mkTweak #-0.8 #3.9 -\lhone 
+        -\mkTweak #-0.8 #9 -\lhfour~
         < f,\6 b'\harmonic >\fermata
         \bar "||"
         \break
       \revert Score.TimeSignature #'stencil
       \time 4/4
-      c''4 
+      s4\stopTextSpan
+      c''4-\lhone
       \cadenzaOff
       \bar "|"
       % Bar 2
@@ -283,19 +318,59 @@ evenFooterMarkup = \oddFooterMarkup
       \set Timing.beatStructure = #'(1 1 1 1)
       \set Timing.beamExceptions = #'()
       \set Score.currentBarNumber = #2
-      a,8 g a\4 c' < d'' a, > \glissando e'' b4\4 \glissando |
+      a,8
+      g 
+      a\4-\rhp -\lhtwo
+      c' 
+      < d'' a, >-\lhfour \glissando 
+      e'' 
+      b4\4-\lhthree \glissando |
       % Bar 3
-      \stemDown \slashedGrace { g8\4 } < a, b' >8 a' g\4 g'\2 a, e' < g\4
-      c'\3>4 |
+      \stemDown \slashedGrace { 
+        g8\4 } 
+      < a, b'\1 \invTNH a'\1 >8 -\rhp -\lhfour ~
+      a'\1-\lhone
+      g\4 
+      g'\2-\lhfour 
+      a, 
+      e' 
+      < g\4 c'\3>4-\lhone |
       % Bar 4
-      d,4 < a\4 d'\3> \revert Script #'padding d,8\staccato c' < f\5 d'\3 > e' |
+      d,4-\rhp
+      < a\4 d'\3>-\rhp -\lhguideone -\lhguidethree
+      \revert Script #'padding 
+      d,8\staccato-\rhp
+      c'-\rhp
+      < f\5 d'\3 >-\lhthree
+      e' |
       \break
       % Bar 5
-      d,8 d'\3 \harmonicByRatio #1/3 g\4 c' d, d'\3 e' c'' |
+      d,8 
+      d'\3 
+      \harmonicByRatio #1/3 g\4-\lhtwo
+      c' 
+      d, 
+      d'\3 
+      e'-\rhp 
+      c''-\rha -\lhone |
       % Bar 6
-      a,8 g a\4 c' < d'' a,> \glissando e'' b4\4 \glissando |
+      a,8
+      g 
+      a\4 
+      c' 
+      < d'' a,> \glissando 
+      e'' 
+      b4\4 \glissando |
       % Bar 7
-      \stemDown \slashedGrace { g8\4 } < a, b' >8 a' g\4 g'\2 a, e' g\4
+      \stemDown \slashedGrace { 
+        g8\4 } 
+      < a, b' >8-\rhp
+      a' 
+      g\4 
+      g'\2 
+      a, 
+      e' 
+      g\4
       c'\3 |
 
 
@@ -308,12 +383,55 @@ evenFooterMarkup = \oddFooterMarkup
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
+    \override TextSpanner #'outside-staff-priority = ##f
+    \tsMove #0 #-1.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4\stopTextSpan
+    s4 s4 s4 
+    \strDampening s4\startTextSpan s4\stopTextSpan 
+    % Bar 2 
+    s8 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
+    % Bar 3
+    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan \strDampening
+    s8\startTextSpan s8 |
+    % Bar 4
+    s4 s4 s4 s8 s8\stopTextSpan |
+    % Bar 5
+    s4 \strDampening s4\startTextSpan s4 s8\stopTextSpan s8 |
+    % Bar 6
+    s4 \strDampening s4\startTextSpan s4\stopTextSpan s4 |
+    % Bar 7
+    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan s8 \strDampening
+       \override TextSpanner #'after-line-breaking =
+  #ly:spanner::kill-zero-spanned-time \endSpanners  
+    s8\startTextSpan |
+    % Bar 8
+    s8 
   }
 %% DynamicsTwo
   dynamicstwo = {
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
+    \override TextSpanner #'outside-staff-priority = ##f
+    \tsMove #0 #-2.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4 s4\stopTextSpan s4 s4
+    \strDampening s4\startTextSpan s4
+    % Bar 2
+    s4 s8 s8\stopTextSpan \strDampening s4\startTextSpan s4 |
+    % Bar 3
+    s4 s8 s8\stopTextSpan s8 \strDampening s8\startTextSpan s4 |
+    % Bar 4
+    s4 s4 s8  s8\stopTextSpan \override TextSpanner #'after-line-breaking =
+  #ly:spanner::kill-zero-spanned-time \endSpanners \strDampening s4 |
+  % Bar 5
+  \strDampening s4\startTextSpan s8 s8\stopTextSpan s8 \strDampening
+  s8\startTextSpan s4 |
+  % Bar 6
+  s4 s8 s8\stopTextSpan \strDampening s4\startTextSpan s4 |
+  % Bar 7
+  s4 s8 s8\stopTextSpan s8 \override TextSpanner #'after-line-breaking =
+  #ly:spanner::kill-zero-spanned-time \endSpanners \strDampening s8\startTextSpan s4 |
+  % Bar 8
+  s4\stopTextSpan
+
   }
 
 %% DynamicsThree
@@ -321,6 +439,23 @@ evenFooterMarkup = \oddFooterMarkup
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
+    \override TextSpanner #'outside-staff-priority = ##f
+    \tsMove #0 #-3.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s4 s4\stopTextSpan
+    s2 s2 
+    \strDampening s4\startTextSpan s4 
+    % Bar 2
+    s8 s8\stopTextSpan s4 \strDampening s4\startTextSpan s4 |
+    % Bar 3
+    s4 s4 s4 s4\stopTextSpan |
+    % Bar 4
+    \strDampening s4\startTextSpan s4\stopTextSpan s4 s4 |
+    % Bar 5
+    s4 s8 \strDampening s8\startTextSpan s8 s8\stopTextSpan \strDampening
+    s8\startTextSpan s8 |
+    % Bar 6
+    s8 s8\stopTextSpan s4 \strDampening s4\startTextSpan s4 |
+    % Bar 7
+    s4 s4 s4 s8 s8\stopTextSpan |
   }
 
 %% DynamicsFour
@@ -334,18 +469,48 @@ evenFooterMarkup = \oddFooterMarkup
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
+    \override TextSpanner #'outside-staff-priority = ##f
+    s1 s1 s1 s1 s2 
+    \strDampening s4\startTextSpan s4 
+    % Bar 2
+    s4\stopTextSpan s2. |
+    % Bar 3
+    s1
+    % Bar 4
+    s2 s16 \textSpannerDown \twoStrDamp s16\startTextSpan s8 s4\stopTextSpan |
+    % Bar 5
+    s2. \twoStrDamp s4\startTextSpan |
+    % Bar 6
+    s4\stopTextSpan 
   }
 %% DynamicsSix
   dynamicssix = {
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
+    \override TextSpanner #'outside-staff-priority = ##f
     \tabFullNotation
+    s1 s1 s1 s1 s2 s2
+    % Bar 2
+    s1
+    % Bar 3
+    s1 
+    % Bar 4
+    s4 s4 s16 \strDampening s16\startTextSpan s8 s4\stopTextSpan |
+    % Bar 5
+    s2 s4 \strDampening s4\startTextSpan |
+    % Bar 6
+    s4\stopTextSpan
   }
 %% SixStr
   sixstr = {
     \textLengthOff
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
+    \override TextSpanner #'outside-staff-priority = ##f
+     s1 s1 s1 s1   \override TrillSpanner #'after-line-breaking =
+  #ly:spanner::kill-zero-spanned-time 
+    \trMove #0.3 #-13 \vibrato #'(1) #1.8 s8\sVib -\mkTweak #0.01 #-3 _\markup { \sans
+    "v " } s8 s32 s32 s32 s32 s32 s32 s32 s32\eVib
   }
 % Score
   \book {
@@ -388,10 +553,10 @@ evenFooterMarkup = \oddFooterMarkup
           \Staff \RemoveEmptyStaves
           \override VerticalAxisGroup #'remove-first = ##t
         }
-        \context {
+         \context {
          \Staff
          \override TimeSignature #'space-alist #'first-note = #'(extra-space .
-         4.9) }
+         2.9) }
      
    }
       \midi {}

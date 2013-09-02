@@ -29,7 +29,7 @@ vibrato = #(define-music-function (parser location amplitudes wavelength) (list?
              (last 
               (inexact->exact (floor (/ (+ span-so-far xspan) wavelength)))))
          (format 
-          #f "gsave currentpoint translate 0.15 setlinewidth newpath /x ~a\
+          #f "gsave currentpoint translate 0.05 setlinewidth newpath /x ~a\
  def\nx 0.0 moveto\n ~a ~a"
           lbound 
           (let make-curve 

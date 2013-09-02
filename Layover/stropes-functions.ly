@@ -1,10 +1,10 @@
 % Right-Hand Articulations
 %% p i m a c
-rhc = \markup { \sans \fontsize #-5 "c" }
-rha = \markup { \sans \fontsize #-5 "a" }
-rhm = \markup { \sans \fontsize #-5 "m" }
-rhi = \markup { \sans \fontsize #-5 "i" }
-rhp = \markup { \sans \fontsize #-5 "p" }
+rhc = \markup { \halign #CENTER \sans \fontsize #-5 "c" }
+rha = \markup { \halign #CENTER \sans \fontsize #-5 "a" }
+rhm = \markup { \halign #CENTER \sans \fontsize #-5 "m" }
+rhi = \markup { \halign #CENTER \sans \fontsize #-5 "i" }
+rhp = \markup { \halign #CENTER \sans \fontsize #-5 "p" }
 %% Flicks Two arrow Heads
 oneStrFlick = \markup { \rotate #180
   \center-column {
@@ -265,11 +265,11 @@ lhthree = \markup { \sans \fontsize #-8 \override #'(thickness . 0.08) \circle \
 lhfour = \markup { \sans \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "4" }
 lhthumb = \markup { \sans \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "t" }
 %% Guide fingers
-lhguideone = \markup { \sans \fontsize #-5 \circle \pad-markup #0.1 "-1" }
-lhguidetwo = \markup {\sans  \fontsize #-5 \circle \pad-markup #0.1 "-2" }
-lhguidethree = \markup {\sans  \fontsize #-5 \circle \pad-markup #0.1 "-3" }
-lhguidefour = \markup {\sans  \fontsize #-5 \circle \pad-markup #0.1 "-4" }
-lhguidethumb = \markup {\sans  \fontsize #-5 \circle \pad-markup #0.1 "-t" }
+lhguideone = \markup { \sans \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "-1" }
+lhguidetwo = \markup {\sans  \fontsize #-8  \override #'(thickness . 0.08) \circle \pad-markup #0.2 "-2" }
+lhguidethree = \markup {\sans  \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "-3" }
+lhguidefour = \markup {\sans  \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "-4" }
+lhguidethumb = \markup {\sans  \fontsize #-8 \override #'(thickness . 0.08) \circle \pad-markup #0.2 "-t" }
 %% TODO add left-hand fingering with Text-Spanners
   % contributed by harm6
   % Code by David Nalesnik and Thomas Morley (v2.16.0)

@@ -205,6 +205,7 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletNumber #'font-size = #'-1
     \override TupletBracket #'edge-height = #'(0.5 . 0.5)
     \override TupletBracket #'extra-offset = #'(0 . -0.1)
+    \override Score.OttavaBracket #'thickness = #'0.6
     \partial 4
     \harmonicByRatio #1/4 
     < e' fis' a' d''>4-\mkTweak #-1 #2.4 -\rhp -\mkTweak #-1 #8
@@ -328,7 +329,9 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
     \partial 4 s4
-    s4 s8 \trMove #0.3 #-1.2 \vibrato #'(1) #1 s8^\markup { \sans v } \sVib s8
+    s4 s8 
+    \override Score.TrillSpanner #'thickness = #'0.8
+    \trMove #0.3 #-1.2 \vibrato #'(1) #1 s8^\markup { \sans v } \sVib s8
     s8 s16 s16\eVib  s8
     % Bar 2
     s1 
@@ -371,7 +374,7 @@ evenFooterMarkup = \oddFooterMarkup
       <<
         \new GrandStaff = "tab with traditional" \with {
           systemStartDelimiter = #'SystemStartBar
-          \override SystemStartBar #'thickness = #5
+          \override SystemStartBar #'thickness = #4
           \override SystemStartBar #'X-offset = #-1
           \override StaffSymbol #'staff-space = #(magstep -2)
           fontSize = #-2
