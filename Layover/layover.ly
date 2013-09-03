@@ -237,7 +237,6 @@ evenFooterMarkup = \oddFooterMarkup
   }
 % Tab
   tab = {
-    \override Clef #'font-series = #'roman
     \override TextSpanner #'staff-padding = #'0
     \set Staff.midiInstrument = #"vibraphone"
     \numericTimeSignature
@@ -273,46 +272,47 @@ evenFooterMarkup = \oddFooterMarkup
         \once\override TextSpanner #'(bound-details right text) = \markup {
         \draw-line #'(0 . -0.5) }
 
-        \tsMove #-1.0 #-0.3 \harmonicByRatio #1/4 d'4\6-\mkTweak #-0.5 #2.8 -\rhp -\mkTweak #-0.8
-        #4.81 -\lhone -\mkTweak #-0.6 #-5.6 ^\rhi -\mkTweak #-0.6 #-5.5 ^\rhm -\mkTweak #-0.6 #-5.3 ^\rha
+        \tsMove #-1.0 #-0.3 \strpHarmFive d'4\6-\mkTweak #-0.3 #0.6 -\rhp -\mkTweak #-0.8
+        #3.88 -\lhone -\mkTweak #-0.3 #-3.4 ^\rhi -\mkTweak #-0.3 #-4.5 ^\rhm -\mkTweak #-0.3 #-4.3 ^\rha
         \startTextSpan ~ 
-        \harmonicByRatio #1/4 d'\6
-        \harmonicByRatio #1/3 e'\5-\mkTweak #-0.5 #3.1 -\rhp \mkTweak #-0.8
-        #5.18 -\lhthree ~
+        \strpHarmFive d'\6
+        \strpHarmSeven e'\5-\mkTweak #-0.3 #1.35 -\rhp 
+        -\mkTweak #-0.6 #4.25 -\lhthree ~
         \override Script #'padding = #1
-        \harmonicByRatio #1/3 e'\5\fermata
-        \harmonicByRatio #1/4 d'\6-\mkTweak #-0.5 #2.8 -\rhp -\mkTweak #1.2 #4.8 -\lhone
-        \harmonicByRatio #1/3 e'\5-\mkTweak #-0.5 #3.1 -\rhp -\mkTweak #1.2
-        #5.12 -\lhthree
-        \harmonicByRatio #1/3 g'\4-\mkTweak #-0.5 #3.4 -\rhp -\mkTweak #-1.0
-        #5.4 -\lhthree ~
-        \harmonicByRatio #1/3 g'\4\fermata
-        \harmonicByRatio #1/4 d'\6-\mkTweak #1.2 #3.9 -\lhone 
-        \harmonicByRatio #1/3 e'\5
-        -\mkTweak #1.2 #4.2 -\lhthree
-        \harmonicByRatio #1/3 g'\4
-        -\mkTweak #1.2 #4.6 -\lhthree
-        \harmonicByRatio #1/4 a'\5
-        -\mkTweak #1.2 #4.2 -\lhthree
-        \harmonicByRatio #1/4 c'\4
-        -\mkTweak #1.2 #4.6 -\lhthree
-        \harmonicByRatio #1/3 d''\3
-        -\mkTweak #1.2 #4.73 -\lhthree
-        \harmonicByRatio #1/2 e''\1
-        -\mkTweak #1.5 #6.5 -\lhfour
-        \harmonicByRatio #1/3 g''\2
-        -\mkTweak #0.2 #6.5 -\lhfour
-        \tieUp < f,\6 b'\harmonic >
-        -\mkTweak #-0.8 #3.9 -\lhone 
-        -\mkTweak #-0.8 #9 -\lhfour~
-        < f,\6 b'\harmonic >\fermata
+        \strpHarmSeven e'\5\fermata
+        \strpHarmFive d'\6-\mkTweak #-0.3 #0.6 -\rhp 
+        -\mkTweak #1.5 #3.9 -\lhone
+        \strpHarmSeven e'\5-\mkTweak #-0.3 #1.35 -\rhp 
+        -\mkTweak #1.5 #4.22 -\lhthree
+        \strpHarmSeven g'\4-\mkTweak #-0.3 #2.35 -\rhp 
+        -\mkTweak #-0.8 #4.6 -\lhthree ~
+        \strpHarmSeven g'\4\fermata
+        \strpHarmFive d'\6-\mkTweak #1.4 #3.9 -\lhone 
+        \strpHarmSeven e'\5
+        -\mkTweak #1.5 #4.2 -\lhthree
+        \strpHarmSeven g'\4
+        -\mkTweak #1.5 #4.6 -\lhthree
+        \strpHarmFive a'\5
+        -\mkTweak #1.5 #4.2 -\lhthree
+        \strpHarmFive c'\4
+        -\mkTweak #1.5 #4.6 -\lhthree
+        \strpHarmSeven d''\3
+        -\mkTweak #1.5 #4.73 -\lhthree
+        \strpHarmTwelve e''\1
+        -\mkTweak #1.7 #6.5 -\lhfour
+        \strpHarmSeven g''\2
+        -\mkTweak #0.4 #6.5 -\lhfour
+        \tieUp < \tweak #'X-offset #0.4 f,\6 \tweakTabNoteHead \strpHarmSevenInChord b' >
+        -\mkTweak #-0.5 #3.9 -\lhone 
+        -\mkTweak #-0.5 #9 -\lhfour~
+        < \tweak #'X-offset #0.4 f,\6 \tweakTabNoteHead \strpHarmSevenInChord b' >\fermata
         \bar "||"
         \break
       \revert Score.TimeSignature #'stencil
       \once\override Staff.TimeSignature #'X-offset = #'-1
       \time 4/4
-      s4\stopTextSpan-\mkTweak #-0.8 #1.3 -\rhp -\mkTweak #-0.8 #-3.5 ^\rhi
-      -\mkTweak #-0.8 #-3.4 ^\rhm -\mkTweak #-0.8 #-3.2 ^\rha
+      s4\stopTextSpan-\mkTweak #-0.8 #1.3 -\rhp -\mkTweak #-0.8 #-3.4 ^\rhi
+      -\mkTweak #-0.8 #-3.3 ^\rhm -\mkTweak #-0.8 #-3.0 ^\rha
       c''4-\mkTweak #0.2 #-1 ^\lhone
       \cadenzaOff
       \bar "|"
@@ -336,8 +336,9 @@ evenFooterMarkup = \oddFooterMarkup
       \once\override Stem #'length = #'3
       \slashedGrace { 
         g8\4 } 
-      < a, b'\1 \invTNH a'\1 >8 -\mkTweak #-0.1 #1.9 -\rhp -\mkTweak #0.2 #-0.8 ^\lhfour ~
-      a'\1-\mkTweak #1.0 #-1.5 ^\lhone
+      < a, b'\1 \invTNH a'\1 >8 -\mkTweak #-0.1 #1.9 -\rhp 
+      -\mkTweak #0.2 #-0.7 ^\lhfour ~
+      a'\1-\mkTweak #1.0 #-1.4 ^\lhone
       g\4 
       g'\2-\mkTweak #0.2 #-1.2 ^\lhfour 
       a, 
@@ -350,17 +351,17 @@ evenFooterMarkup = \oddFooterMarkup
       \revert Script #'padding 
       d,8\staccato-\mkTweak #-0.2 #2.9 -\rhp
       c'-\mkTweak #-2 #3.9 -\rhp
-      < f\5 d'\3 >-\mkTweak #1 #4.6 -\lhthree
+      < f\5 d'\3 >-\mkTweak #1 #4.5 -\lhthree
       e' |
       \break
       % Bar 5
       d,8 
       d'\3 
-      \harmonicByRatio #1/3 g\4-\mkTweak #1.2 #4 -\lhtwo
+      \strpHarmSeven g\4-\mkTweak #1.6 #4.05 -\lhtwo
       c' 
       d, 
       d'\3 
-      e'-\mkTweak #-0.5 #3.5 -\rhp 
+      e'-\mkTweak #-0.5 #3.4 -\rhp 
       c''-\mkTweak #-0.3 #8.3 -\rha 
       -\mkTweak #1 #9.4 -\lhone |
       % Bar 6
@@ -489,7 +490,7 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
     s1 s1 s1 s1 s2 
-    \tsMove #0 #-5.1 \strDampening s4\startTextSpan s4 
+    \tsMove #0 #-5.04 \strDampening s4\startTextSpan s4 
     % Bar 2
     s4\stopTextSpan s2. |
     % Bar 3
@@ -553,7 +554,7 @@ evenFooterMarkup = \oddFooterMarkup
         >>
         \new TabStaff = "guitar tab" 
         <<
-          \clef "moderntab"
+          \clef "moderntabII"
           \set Staff.stringTunings = \stringTuning <d, a, c g c' e'>
           \new TabVoice = "dynamicsone" \dynamicsone
           \new TabVoice = "dynamicstwo" \dynamicstwo
@@ -576,6 +577,10 @@ evenFooterMarkup = \oddFooterMarkup
          \Staff
          \override TimeSignature #'space-alist #'first-note = #'(extra-space .
          2.9) }
+         \context {
+           \TabStaff
+            \override Clef #'stencil = #clef::print-modern-custom-tab-if-set
+          }
      
    }
       \midi {}
