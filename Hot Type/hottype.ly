@@ -195,6 +195,7 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \stemDown
     \override Rest #'font-size = #2 
+    \override TabStaff.TimeSignature #'X-offset = #-1
     \override TabStaff.TimeSignature #'font-size = #5
     \override TabStaff.TabNoteHead #'font-name = #"Helvetica"
     \override Staff.Stem #'stemlet-length = #2.75
@@ -205,10 +206,9 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletNumber #'font-size = #'-1
     \override TupletBracket #'edge-height = #'(0.5 . 0.5)
     \override TupletBracket #'extra-offset = #'(0 . -0.1)
-    \override Score.OttavaBracket #'thickness = #'0.6
+    \override Score.OttavaBracket #'thickness = #'0.5
     \partial 4
-    \harmonicByRatio #1/4 
-    < e' fis' a' d''>4-\mkTweak #-1 #2.4 -\rhp -\mkTweak #-1 #8
+    \strpHarmFive < e' fis' a' d''>4-\mkTweak #-0.5 #1.4 -\rhp -\mkTweak #-0.8 #7.1
     -\fourstrdwnstrm -\mkTweak #2 #-2.7 ^\lhthree |
     % Bar 1
       \bsMove #-2 #0 \rightBracketFour d,8^\repeatTie -\mkTweak #-0.5 #3.1 -\lhtwo 
@@ -257,28 +257,29 @@ evenFooterMarkup = \oddFooterMarkup
     \break
     % Bar 5
       d,8[ 
-      \bsMove #2 #0 \rightBracketFour < g a>8-\mkTweak #-0.7 #7.7 -\rhc
+      \bsMove #2 #0 \rightBracketFour < g a>8-\mkTweak #-0.5 #7.7 -\rhc
       -\mkTweak #1.8 #7.7 -\lhone
       -\mkTweak #-0.8 #8.2 -\twostrupstrm ]  
-      b,-\mkTweak #-0.5 #2.6 -\rhp -\mkTweak #-0.6 #-6.15 ^\oneStrFlick [ 
+      b,-\mkTweak #-0.3 #2.8 -\rhp -\mkTweak #-0.6 #-6.03 ^\oneStrFlick [ 
       \bsMove #2 #-2 \rightBracketTwo c,-\mkTweak #1.8 #3.9 -\lhone ] 
       \stringSnare e[ 
-      \bsMove #2 #0 \rightBracketFour < a\4 b\3>-\mkTweak #-0.7 #5.8 -\rhc
+      \bsMove #2 #0 \rightBracketFour < a\4 b\3>-\mkTweak #-0.45 #5.8 -\rhc
       -\mkTweak #1.8 #5.8 -\lhfour -\mkTweak #-0.8 #-3.9 ^\twostrupstrm ] 
-      < \invTNH c,>-\mkTweak #-0.5 #2.6 -\rhp [ 
+      < \invTNH c,>-\mkTweak #-0.3 #2.8 -\rhp [ 
       d,8-\mkTweak #-0.5 #2.4 -\lhthree ] |
     % Bar 6
       \bsMove #3.2 #-1 \rightBracketFive g8\4-\mkTweak #1.8 #6.9 -\lhone
       -\mkTweak #-0.5 #3.8 -\rhp
-      -\mkTweak #-0.6 #-5.15 ^\oneStrFlick [ 
+      -\mkTweak #-0.6 #-5.05 ^\oneStrFlick [ 
       a,,]~ 
       < \invTNH a,,\6 c,\6>-\mkTweak #-0.5 #2.7 -\lhone [ 
-      \bsMove #2.2 #0 \rightBracketTwo \harmonicByRatio #1/4 < e'\4
-      fis'\3>-\mkTweak #-0.9 #7.7 -\rhc -\mkTweak #2 #6.7 -\lhfour -\mkTweak #-1 #-3.9 ^\twostrupstrm ] 
+      \bsMove #2.4 #0 \rightBracketTwo \strpHarmFive < e'\4
+      fis'\3>-\mkTweak #-0.5 #7.7 -\rhc -\mkTweak #2.2 #6.7 -\lhfour -\mkTweak
+      #-0.8 #-3.9 ^\twostrupstrm ] 
       < \invTNH c,>[
-      \bsMove #2.2 #2 \rightBracketTwo \harmonicByRatio #1/4 < a'
-      d''>8-\mkTweak #-0.9 #9 -\rhc -\mkTweak #2 #8.7 -\lhfour
-        -\mkTweak #-1 #-2.2 ^\twostrupstrm ] 
+      \bsMove #2.4 #2 \rightBracketTwo \strpHarmFive < a'
+      d''>8-\mkTweak #-0.4 #9 -\rhc -\mkTweak #2.2 #8.7 -\lhfour
+        -\mkTweak #-0.8 #-2.2 ^\twostrupstrm ] 
       < \invTNH c,> 
       \times 2/3 { 
         d,16-\mkTweak #-0.5 #4 -\lhthree
@@ -336,15 +337,15 @@ evenFooterMarkup = \oddFooterMarkup
     % Bar 2
     s1 
     % Bar 3
-    s4 \tsMove #0 #-8.05 \strDampening s8\startTextSpan \trMove #0.3 #-1.2 \vibrato #'(1) #1
+    s4 \tsMove #0 #-7.98 \strDampening s8\startTextSpan \trMove #0.3 #-1.2 \vibrato #'(1) #1
     s8^\markup { \sans v} \sVib\stopTextSpan s4 s16\eVib  s16 s8 |
     % Bar 4
     s1 
     % Bar 5
-    s4 \tsMove #0 #-6.1 \strDampening s8\startTextSpan s8\stopTextSpan s4
-    \tsMove #0 #-6.1 \strDampening s8\startTextSpan s8\stopTextSpan |
+    s4 \tsMove #0 #-6.04 \strDampening s8\startTextSpan s8\stopTextSpan s4
+    \tsMove #0 #-6.04 \strDampening s8\startTextSpan s8\stopTextSpan |
     % Bar 6
-    \tsMove #0 #-6.1 \strDampening s8\startTextSpan s8\stopTextSpan s2. 
+    \tsMove #0 #-6.04 \strDampening s8\startTextSpan s8\stopTextSpan s2. 
 
   }
 
@@ -390,7 +391,7 @@ evenFooterMarkup = \oddFooterMarkup
         >>
         \new TabStaff = "guitar tab" 
         <<
-          \clef "moderntab"
+          \clef "moderntabII"
           \set Staff.stringTunings = \stringTuning <a,, b, e fis b e'>
           \new TabVoice = "dynamicsone" \dynamicsone
           \new TabVoice = "dynamicstwo" \dynamicstwo
@@ -413,6 +414,10 @@ evenFooterMarkup = \oddFooterMarkup
           \Staff
           \override TimeSignature #'space-alist #'first-note = #'(extra-space .
           4.9) }
+        \context {
+      \TabStaff
+      \override Clef #'stencil = #clef::print-modern-custom-tab-if-set
+    }
       }
       \midi {}
 
