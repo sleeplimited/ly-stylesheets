@@ -237,6 +237,7 @@ evenFooterMarkup = \oddFooterMarkup
   }
 % Tab
   tab = {
+    \override Clef #'font-series = #'roman
     \override TextSpanner #'staff-padding = #'0
     \set Staff.midiInstrument = #"vibraphone"
     \numericTimeSignature
@@ -308,6 +309,7 @@ evenFooterMarkup = \oddFooterMarkup
         \bar "||"
         \break
       \revert Score.TimeSignature #'stencil
+      \once\override Staff.TimeSignature #'X-offset = #'-1
       \time 4/4
       s4\stopTextSpan-\mkTweak #-0.8 #1.3 -\rhp -\mkTweak #-0.8 #-3.5 ^\rhi
       -\mkTweak #-0.8 #-3.4 ^\rhm -\mkTweak #-0.8 #-3.2 ^\rha
@@ -394,23 +396,26 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
-    \tsMove #0 #-1.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4\stopTextSpan
+    \tsMove #0 #-1.04 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2
+    s4\stopTextSpan
     s4 s4 s4 
-    \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4\stopTextSpan 
+    \tsMove #0 #-1.04 \strDampening s4\startTextSpan s4\stopTextSpan 
     % Bar 2 
-    s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
+    s8 \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
     % Bar 3
-    s4 s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan \tsMove #0 #-1.1 \strDampening
+    s4 s8 \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 s8\stopTextSpan
+    \tsMove #0 #-1.04 \strDampening
     s8\startTextSpan s8 |
     % Bar 4
     s4 s4 s4 s8 s8\stopTextSpan |
     % Bar 5
-    s4 \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4 s8\stopTextSpan s8 |
+    s4 \tsMove #0 #-1.04 \strDampening s4\startTextSpan s4 s8\stopTextSpan s8 |
     % Bar 6
-    s4 \tsMove #0 #-1.1 \strDampening s4\startTextSpan s4\stopTextSpan s4 |
+    s4 \tsMove #0 #-1.04 \strDampening s4\startTextSpan s4\stopTextSpan s4 |
     % Bar 7
-    s4 s8 \tsMove #0 #-1.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan s8
-    \tsMove #-0.03 #-1.1 \strDampening
+    s4 s8 \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 s8\stopTextSpan
+    s8
+    \tsMove #-0.03 #-1.04 \strDampening
     \override TextSpanner #'after-line-breaking =
     #ly:spanner::kill-zero-spanned-time \endSpanners  
     s8\startTextSpan |
@@ -423,23 +428,24 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
-    \tsMove #0 #-2.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4 s4\stopTextSpan s4 s4
-    \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4
+    \tsMove #0 #-2.04 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4 s4\stopTextSpan s4 s4
+    \tsMove #0 #-2.04 \strDampening s4\startTextSpan s4
     % Bar 2
-    s4 s8 s8\stopTextSpan \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4 |
+    s4 s8 s8\stopTextSpan \tsMove #0 #-2.04 \strDampening s4\startTextSpan s4 |
     % Bar 3
-    s4 s8 s8\stopTextSpan s8 \tsMove #0 #-2.1 \strDampening s8\startTextSpan s4 |
+    s4 s8 s8\stopTextSpan s8 \tsMove #0 #-2.04 \strDampening s8\startTextSpan s4 |
     % Bar 4
     s4 s4 s8  s8\stopTextSpan \override TextSpanner #'after-line-breaking =
-  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.1 \strDampening s4 |
+  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.04 \strDampening s4 |
   % Bar 5
-  \tsMove #0 #-2.1 \strDampening s4\startTextSpan s8 s8\stopTextSpan s8 \tsMove #0 #-2.1 \strDampening
+  \tsMove #0 #-2.04 \strDampening s4\startTextSpan s8 s8\stopTextSpan s8
+  \tsMove #0 #-2.04 \strDampening
   s8\startTextSpan s4 |
   % Bar 6
-  s4 s8 s8\stopTextSpan \tsMove #0 #-2.1 \strDampening s4\startTextSpan s4 |
+  s4 s8 s8\stopTextSpan \tsMove #0 #-2.04 \strDampening s4\startTextSpan s4 |
   % Bar 7
   s4 s8 s8\stopTextSpan s8 \override TextSpanner #'after-line-breaking =
-  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.1 \strDampening s8\startTextSpan s4 |
+  #ly:spanner::kill-zero-spanned-time \endSpanners \tsMove #0 #-2.04 \strDampening s8\startTextSpan s4 |
   % Bar 8
   s4\stopTextSpan
 
@@ -451,20 +457,21 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
-    \tsMove #0 #-3.1 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s4 s4\stopTextSpan
+    \tsMove #0 #-3.04 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s4 s4\stopTextSpan
     s2 s2 
-    \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 
+    \tsMove #0 #-3.04 \strDampening s4\startTextSpan s4 
     % Bar 2
-    s8 s8\stopTextSpan s4 \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 |
+    s8 s8\stopTextSpan s4 \tsMove #0 #-3.04 \strDampening s4\startTextSpan s4 |
     % Bar 3
     s4 s4 s4 s4\stopTextSpan |
     % Bar 4
-    \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4\stopTextSpan s4 s4 |
+    \tsMove #0 #-3.04 \strDampening s4\startTextSpan s4\stopTextSpan s4 s4 |
     % Bar 5
-    s4 s8 \tsMove #0 #-3.1 \strDampening s8\startTextSpan s8 s8\stopTextSpan \tsMove #0 #-3.1 \strDampening
+    s4 s8 \tsMove #0 #-3.04 \strDampening s8\startTextSpan s8 s8\stopTextSpan
+    \tsMove #0 #-3.04 \strDampening
     s8\startTextSpan s8 |
     % Bar 6
-    s8 s8\stopTextSpan s4 \tsMove #0 #-3.1 \strDampening s4\startTextSpan s4 |
+    s8 s8\stopTextSpan s4 \tsMove #0 #-3.04 \strDampening s4\startTextSpan s4 |
     % Bar 7
     s4 s4 s4 s8 s8\stopTextSpan |
   }
@@ -488,9 +495,9 @@ evenFooterMarkup = \oddFooterMarkup
     % Bar 3
     s1
     % Bar 4
-    s2 s16 \textSpannerDown \tsMove #-0.03 #2.1 \twoStrDamp s16\startTextSpan s8 s4\stopTextSpan |
+    s2 s16 \textSpannerDown \tsMove #-0.03 #2.04 \twoStrDamp s16\startTextSpan s8 s4\stopTextSpan |
     % Bar 5
-    s2. \tsMove #-0.03 #2.1 \twoStrDamp s4\startTextSpan |
+    s2. \tsMove #-0.03 #2.04 \twoStrDamp s4\startTextSpan |
     % Bar 6
     s4\stopTextSpan 
   }
@@ -506,9 +513,10 @@ evenFooterMarkup = \oddFooterMarkup
     % Bar 3
     s1 
     % Bar 4
-    s4 s4 s16 \tsMove #0 #-6.1 \strDampening s16\startTextSpan s8 s4\stopTextSpan |
+    s4 s4 s16 \tsMove #0 #-6.04 \strDampening s16\startTextSpan s8
+    s4\stopTextSpan |
     % Bar 5
-    s2 s4 \tsMove #0 #-6.1 \strDampening s4\startTextSpan |
+    s2 s4 \tsMove #0 #-6.04 \strDampening s4\startTextSpan |
     % Bar 6
     s4\stopTextSpan
   }

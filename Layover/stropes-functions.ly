@@ -232,29 +232,29 @@ onestrupstrm = \markup {
 %% String-Dampening
 strDampening = { 
   \once \override TextSpanner #'style = #'line
-  \once \override TextSpanner #'thickness = #8
-  \once \override TextSpanner #'color = #(x11-color "plum")
+  \once \override TextSpanner #'thickness = #6
+  \once \override TextSpanner #'color = #(rgb-color 0.945 0.635 0.675)
   \once \override TextSpanner #'layer = #-1
 }
 twoStrDamp = {
   \once \override TextSpanner #'style = #'line
-  \once \override TextSpanner #'thickness = #8
-  \once \override TextSpanner #'color = #(x11-color "plum")
+  \once \override TextSpanner #'thickness = #6
+  \once \override TextSpanner #'color = #(rgb-color 0.945 0.635 0.675)
   \once \override TextSpanner #'layer = #-1
   \once \override TextSpanner #'(bound-details left text) = \markup {
-    \lower #0.76
+    \lower #0.77
     \halign #CENTER
-     \beam #0.6 #0 #2.2 }
+     \beam #0.5 #0 #2.06 }
    }
 threeStrDamp = {
   \once \override TextSpanner #'style = #'line
-  \once \override TextSpanner #'thickness = #8
-  \once \override TextSpanner #'color = #(x11-color "plum")
+  \once \override TextSpanner #'thickness = #6
+  \once \override TextSpanner #'color = #(rgb-color 0.945 0.635 0.675)
   \once \override TextSpanner #'layer = #-1
   \once \override TextSpanner #'(bound-details left text) = \markup {
     \lower #1.52
     \halign #CENTER
-     \beam #0.6 #0 #3.7 }
+     \beam #0.5 #0 #3.7 }
 
 }
 % Left Hand Articulations
