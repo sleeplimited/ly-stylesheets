@@ -29,8 +29,8 @@ __..           .           ,      .
 \pointAndClickOff
 % header
 \header {
-  title = \markup { \sans \bold \fontsize #1 "Hot Type" }
-  composer = \markup { \sans \fontsize #-2 "Michael Hedges" }
+  title = \markup { \sans \bold \fontsize #3 "Hot Type" }
+  composer = \markup { \sans \fontsize #-1 "Michael Hedges" }
   poet = \markup { \concat { \sans \fontsize #-2 { A\fontsize #-5 {1}" "B\fontsize
   #-5 {2}" "E\fontsize #-5 {3}" "F\raise #0.6 \fontsize #-5 \sharp\fontsize #-5 {3}" "A\fontsize #-5 {3}" "D\fontsize #-5
   {4} }}}
