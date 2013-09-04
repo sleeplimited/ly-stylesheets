@@ -144,21 +144,27 @@ sixStrFlick = \markup { \rotate #180
 onestrdwnstrm = \markup { \rotate #180 
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 1.5)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 twostrdwnstrm = \markup { \rotate #180 
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 2.5)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 threestrdwnstrm = \markup { \rotate #180 
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 4)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
@@ -167,13 +173,16 @@ fourstrdwnstrm = \markup { \rotate #180
     \combine 
     \override #'(thickness . 0.08)
     \draw-line #'(0 . 5.8)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 fivestrdwnstrm = \markup { \rotate #180 
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 7.2)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
    }
   }
@@ -181,7 +190,9 @@ sixstrdwnstrm = \markup {
   \center-column {
   \rotate #180 {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 8.8)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
   }
     }
@@ -189,28 +200,36 @@ sixstrdwnstrm = \markup {
 sixstrupstrm = \markup {
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 8.8)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 fivestrupstrm = \markup {  
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 7.2)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
    }
   }
 fourstrupstrm = \markup {  
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 5.8)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 threestrupstrm = \markup {
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 4)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
@@ -219,13 +238,16 @@ twostrupstrm = \markup {
     \combine
     \override #'(thickness . 0.08)
     \draw-line #'(0 . 2.5)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
 onestrupstrm = \markup {  
   \center-column {
     \combine
+    \override #'(thickness . 0.08)
     \draw-line #'(0 . 1.5)
+    \fontsize #2
     \arrow-head #Y #DOWN ##t
     }
   }
@@ -442,7 +464,7 @@ bass = \markup {
     \halign #CENTER
     \override #'(box-padding . 0)
     \box {
-      \filled-box #'(0 . 0.5) #'(0 . 0.5) #0
+      \filled-box #'(0 . 0.6) #'(0 . 0.6) #0
     }
   }
 }
@@ -454,7 +476,7 @@ longBass = \markup {
     \halign #CENTER
     \override #'(box-padding . 0)
     \box {
-      \filled-box #'(0 . 0.5) #'(0 . 0.5) #0
+      \filled-box #'(0 . 0.6) #'(0 . 0.6) #0
     }
   }
 }
@@ -481,9 +503,11 @@ tomTom = \markup {
     \draw-line #'(0 . 3)
     \halign #CENTER
     \override #'(box-padding . 0.1)
+    \override #'(thickness . 0.9)
+    \raise #0.1
     \box {
-      \override #'(thickness . 1.3)
-      \draw-line #'(0.75 . 0) 
+      \override #'(thickness . 0.9)
+      \draw-line #'(1.2 . 0) 
     }
   }
 }

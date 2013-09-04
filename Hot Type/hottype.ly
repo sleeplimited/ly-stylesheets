@@ -112,6 +112,7 @@ __..           .           ,      .
 evenFooterMarkup = \oddFooterMarkup 
 
 } 
+%{ Layout 
 \layout {
   \context {
     \Score
@@ -121,7 +122,7 @@ evenFooterMarkup = \oddFooterMarkup
     (stretchability . 0))
     }
   }
-
+  %}
 % Includes and functions
   \include "stropes-functions.ly"
   \include "vibrato.ly"
@@ -208,7 +209,7 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletBracket #'extra-offset = #'(0 . -0.1)
     \override Score.OttavaBracket #'thickness = #'0.5
     \partial 4
-    \strpHarmFive < e' fis' a' d''>4-\mkTweak #-0.5 #1.4 -\rhp -\mkTweak #-0.8 #7.1
+    \strpHarmFive < e' fis' a' d''>4-\mkTweak #-0.5 #1.4 -\rhp -\mkTweak #-1 #7.1
     -\fourstrdwnstrm -\mkTweak #2 #-2.7 ^\lhthree |
     % Bar 1
       \bsMove #-2 #0 \rightBracketFour d,8^\repeatTie -\mkTweak #-0.5 #3.1 -\lhtwo 
@@ -217,11 +218,11 @@ evenFooterMarkup = \oddFooterMarkup
       c,8^\repeatTie -\mkTweak #-0.55 #2.6 -\lhtwo ~ 
       c,4 
       < \invTNH c,>8
-      \times 2/3 { c,16-\mkTweak #0.15 #6 -\rhc ^\markup { \halign #CENTER \fontsize #-4 "note 1"} 
-      c,-\mkTweak #0.15 #6.4 -\rha 
-      c,-\mkTweak #0 #6 -\rhm } |
+      \times 2/3 { c,16-\mkTweak #0.35 #6 -\rhc ^\markup { \halign #CENTER \fontsize #-4 "note 1"} 
+      c,-\mkTweak #0.35 #6.4 -\rha 
+      c,-\mkTweak #0.35 #6 -\rhm } |
     % Bar 2
-      < \invTNH a,,\6 d,\6>8-\mkTweak #-0.5 #2.6 -\lhfour -\mkTweak #0.2 #5.8 -\rhi ~[ 
+      < \invTNH a,,\6 d,\6>8-\mkTweak #-0.5 #2.6 -\lhfour -\mkTweak #0.35 #5.8 -\rhi ~[ 
       a,,\6]~ 
       < \invTNH a,,\6 b,,\6>-\mkTweak #-0.5 #2.6 -\lhone [~ 
       < \invTNH a,,\6 c,\6>-\mkTweak #-0.5 #2.6 -\lhtwo ] 
@@ -332,13 +333,14 @@ evenFooterMarkup = \oddFooterMarkup
     \partial 4 s4
     s4 s8 
     \override Score.TrillSpanner #'thickness = #'0.8
-    \trMove #0.3 #-1.2 \vibrato #'(1) #1 s8^\markup { \sans v } \sVib s8
-    s8 s16 s16\eVib  s8
+    \trMove #0.3 #-0.8 \vibrato #'(1) #1.8 s8-\mkTweak #0 #0.4 ^\markup { \sans v } \sVib 
+    s4 s16 s16\eVib s8 |
     % Bar 2
     s1 
     % Bar 3
-    s4 \tsMove #0 #-7.98 \strDampening s8\startTextSpan \trMove #0.3 #-1.2 \vibrato #'(1) #1
-    s8^\markup { \sans v} \sVib\stopTextSpan s4 s16\eVib  s16 s8 |
+    s4 \tsMove #0 #-7.98 \strDampening s8\startTextSpan \trMove #0.3 #-0.8
+    \vibrato #'(1) #1.8 s8-\mkTweak #0 #0.4 ^\markup { \sans v} \sVib\stopTextSpan s32 s32 s32
+    s32 s32 s32 s32 s32 s16 s16\eVib s8 |
     % Bar 4
     s1 
     % Bar 5
@@ -356,17 +358,19 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \partial 4 s4 
     % Bar 1
-    s4 s4\mkTweak #-0.04 #-1.9 _\tomTom s4 s4\mkTweak #0.14 #-2.3 _\bass |
+    s4 s4\mkTweak #-0.18 #-1.9 _\tomTom s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 2
-    s2 s4 s4\mkTweak #0.15 #-2.3 _\bass |
+    s2 s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 3
-    s2 s4 s4\mkTweak #0.15 #-2.3 _\bass |
+    s4 s4\mkTweak #0.12 #-2.0 _\bass s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 4
-    s2 s4 s4\mkTweak #0.15 #-2.3 _\bass |
+    s2 s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 5
-    s4 s4\mkTweak #0.15 #-1.9 _\bass s4\mkTweak #0.1 #0 _\longBass s4\mkTweak #0.15 #-1.9 _\bass |
+    s4 s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak #0.07 #0 _\longBass s4\mkTweak
+    #0.12 #-1.9 _\bass |
     % Bar 6
-    s4\mkTweak #0.15 #-1.9 _\bass s4\mkTweak #0.15 #-1.9 _\bass s4\mkTweak #0.15 #-1.9 _\bass s4\mkTweak #0.15 #-1.9 _\bass |
+    s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak
+    #0.12 #-1.9 _\bass s4\mkTweak #0.12 #-1.9 _\bass |
   }
 
 % Score
