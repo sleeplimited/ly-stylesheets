@@ -261,7 +261,8 @@ evenFooterMarkup = \oddFooterMarkup
       \bsMove #2 #0 \rightBracketFour < g a>8-\mkTweak #-0.5 #7.7 -\rhc
       -\mkTweak #1.8 #7.7 -\lhone
       -\mkTweak #-0.8 #8.2 -\twostrupstrm ]  
-      b,-\mkTweak #-0.3 #2.8 -\rhp -\mkTweak #-0.6 #-6.03 ^\oneStrFlick [ 
+      b,-\mkTweak #-0.3 #2.8 -\rhp 
+      -\mkTweak #-0.6 #-6.05 ^\oneStrFlick [ 
       \bsMove #2 #-2 \rightBracketTwo c,-\mkTweak #1.8 #3.9 -\lhone ] 
       \stringSnare e[ 
       \bsMove #2 #0 \rightBracketFour < a\4 b\3>-\mkTweak #-0.45 #5.8 -\rhc
@@ -358,7 +359,7 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
     \partial 4 s4 
     % Bar 1
-    s4 s4\mkTweak #-0.18 #-1.9 _\tomTom s4 s4\mkTweak #0.12 #-2.3 _\bass |
+    s4 s4\mkTweak #-0.10 #-1.9 _\tomTom s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 2
     s2 s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 3
@@ -366,7 +367,7 @@ evenFooterMarkup = \oddFooterMarkup
     % Bar 4
     s2 s4 s4\mkTweak #0.12 #-2.3 _\bass |
     % Bar 5
-    s4 s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak #0.07 #0 _\longBass s4\mkTweak
+    s4 s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak #0.15 #0 _\longBass s4\mkTweak
     #0.12 #-1.9 _\bass |
     % Bar 6
     s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak #0.12 #-1.9 _\bass s4\mkTweak
@@ -379,7 +380,7 @@ evenFooterMarkup = \oddFooterMarkup
       <<
         \new GrandStaff = "tab with traditional" \with {
           systemStartDelimiter = #'SystemStartBar
-          \override SystemStartBar #'thickness = #4
+          \override SystemStartBar #'thickness = #5
           \override SystemStartBar #'X-offset = #-1
           \override StaffSymbol #'staff-space = #(magstep -2)
           fontSize = #-2

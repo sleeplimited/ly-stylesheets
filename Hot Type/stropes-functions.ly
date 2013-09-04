@@ -9,12 +9,13 @@ rhp = \markup { \halign #CENTER \sans \fontsize #-5 "p" }
 oneStrFlick = \markup { \rotate #180
   \center-column {
     \combine
-    \draw-line #'(0 . 1.4)
+    \override #'(thickness . 0.08)
+    \draw-line #'(0 . 1.3)
     \combine
-    \fontsize #-3 
+    \fontsize #-1 
     \arrow-head #Y #DOWN ##f
     \raise #0.4
-    \fontsize #-3 
+    \fontsize #-1 
     \arrow-head #Y #DOWN ##f
   }  
   }
@@ -451,8 +452,10 @@ snare = \markup {
     \draw-line #'(0 . 3)
     \halign #CENTER
     \override #'(box-padding . 0) 
+    \override #'(thickness . 0.8)
     \box {
-      \draw-line #'(1 . 0.25)
+    \override #'(thickness . 0.5)
+      \draw-line #'(1.25 . 0.25)
     }
   }
 }
@@ -507,7 +510,7 @@ tomTom = \markup {
     \raise #0.1
     \box {
       \override #'(thickness . 0.9)
-      \draw-line #'(1.2 . 0) 
+      \draw-line #'(1 . 0) 
     }
   }
 }
@@ -595,8 +598,10 @@ tickInChord = \markup { \musicglyph #"noteheads.s0laThin" }
 mutedString = \markup { \musicglyph #"noteheads.s2cross" }
 stringSnare = \newTabNoteHead \markup { \override #'(box-padding . 0)
   \raise #0.5
+    \override #'(thickness . 0.8)
   \box {
-    \draw-line #'(1 . 0.25)
+    \override #'(thickness . 0.5)
+    \draw-line #'(1.25 . 0.25)
   }
 }
 
