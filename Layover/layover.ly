@@ -29,7 +29,7 @@ __..           .           ,      .
 \pointAndClickOff
 % header
 \header {
-  title = \markup { \sans \bold \fontsize #1 "Layover" }
+  title = \markup { \sans \bold \fontsize #3 "Layover" }
   composer = \markup { \sans \fontsize #-2 "Michael Hedges" }
   poet = \markup { \concat { \sans \fontsize #-2 { D\fontsize #-5 {2}" "A\fontsize
   #-5 {2}" "C\fontsize #-5 {3}" "G\fontsize #-5 {3}" "C\fontsize #-5 {4}" "E\fontsize #-5
@@ -355,6 +355,9 @@ evenFooterMarkup = \oddFooterMarkup
       e' |
       \break
       % Bar 5
+      \override Score.BarNumber #'extra-offset = #'(1.5 . -17.8)
+      \override Score.BarNumber #'font-family = #'sans
+      \override Score.BarNumber #'font-size = #'-6
       d,8 
       d'\3 
       \strpHarmSeven g\4-\mkTweak #1.6 #4.05 -\lhtwo
@@ -397,16 +400,14 @@ evenFooterMarkup = \oddFooterMarkup
     \override TextScript #'outside-staff-priority = ##f
     \tabFullNotation
     \override TextSpanner #'outside-staff-priority = ##f
-    \tsMove #0 #-1.04 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2
-    s4\stopTextSpan
-    s4 s4 s4 
+    \tsMove #0 #-1.04 \strDampening s2\startTextSpan s2 s2 s2 s2 s2 s2 s4\stopTextSpan
+    s4 s4 s4
     \tsMove #0 #-1.04 \strDampening s4\startTextSpan s4\stopTextSpan 
     % Bar 2 
-    s8 \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 s8 s4\stopTextSpan s4 |
+    s8  \tsMove #0 #-1.04 \strDampening s8\startTextSpan s4 s4\stopTextSpan s4 |
     % Bar 3
     s4 s8 \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 s8\stopTextSpan
-    \tsMove #0 #-1.04 \strDampening
-    s8\startTextSpan s8 |
+    \tsMove #0 #-1.04 \strDampening s8\startTextSpan s8 |
     % Bar 4
     s4 s4 s4 s8 s8\stopTextSpan |
     % Bar 5

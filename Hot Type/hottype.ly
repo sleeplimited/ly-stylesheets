@@ -34,11 +34,7 @@ __..           .           ,      .
   poet = \markup { \concat { \sans \fontsize #-2 { A\fontsize #-5 {1}" "B\fontsize
   #-5 {2}" "E\fontsize #-5 {3}" "F\raise #0.6 \fontsize #-5 \sharp\fontsize #-5 {3}" "A\fontsize #-5 {3}" "D\fontsize #-5
   {4} }}}
-  meter = \markup {
-    \concat {
-      \fontsize #-2 { \note #"4" #1 } " = " \italic "88"
-    }
-  }
+  meter = \markup { " " }
   copyright = \markup { 
     \sans 
     \center-column { 
@@ -139,6 +135,12 @@ evenFooterMarkup = \oddFooterMarkup
     \time 4/4
     \set Score.tempoHideNote = ##t
     \tempo 4 = 88
+    \override Score.RehearsalMark #'break-align-symbols = #'(key-signature)
+    \once \override Score.KeySignature #'break-align-anchor = #2.3
+    \once \override Score.RehearsalMark #'extra-offset = #'(0 . 2)
+    \mark \markup  { \fontsize #-4 \concat {
+      \fontsize #0 { \note #"4" #1 }" =" \fontsize #-4 \number " 88"
+    }}
     \key g \major
     \partial 4 \ottava #1 \harmonicByRatio #1/4 < e fis a d'>4~ 
     % Bar 1
@@ -234,6 +236,9 @@ evenFooterMarkup = \oddFooterMarkup
         d, } |
     \break
     % Bar 3
+      \override Score.BarNumber #'extra-offset = #'(1.5 . -17.8)
+      \override Score.BarNumber #'font-family = #'sans
+      \override Score.BarNumber #'font-size = #'-6
       d,8
       c'8\rest 
       < \invTNH d,>8-\mkTweak #-0.5 #2.5 -\rhp 
