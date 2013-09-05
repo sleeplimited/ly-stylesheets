@@ -116,6 +116,14 @@ evenFooterMarkup = \oddFooterMarkup
     (padding . -10)
     (stretchability . 0))
     }
+        \context { 
+          \Staff \RemoveEmptyStaves
+          \override VerticalAxisGroup #'remove-first = ##t
+        }
+        \context { 
+          \TabStaff \RemoveEmptyStaves
+          \override VerticalAxisGroup #'remove-first = ##t
+        }
   }
 
 % Includes and functions
@@ -252,7 +260,8 @@ evenFooterMarkup = \oddFooterMarkup
   }
 %% Tab II
   tabII = {
-    s1 s1 s1 s1
+    R1 R1 R1 R1
+    
     \set Staff.midiInstrument = #"vibraphone"
     \override Beam #'damping = #100000
     \override TabNoteHead #'whiteout = ##t
@@ -273,10 +282,13 @@ evenFooterMarkup = \oddFooterMarkup
     \override Score.BarNumber #'extra-offset = #'(1.5 . -17.8)
     \override Score.BarNumber #'font-family = #'sans
     \override Score.BarNumber #'font-size = #'-6
-    % Bar 1
-    \override Staff.Rest #'extra-offset =#'(0 . -1)
-
+    % Bar 5
           \clef "moderntabII"
+    \override Staff.Rest #'extra-offset =#'(0 . -1)
+    c16 d8.~ d4~ d~ d~ |
+    % Bar 6
+    d4~ d~ d~ d~ |
+
   }
 % Dynamics
 %% DynamicsOne
@@ -345,8 +357,7 @@ evenFooterMarkup = \oddFooterMarkup
           >>
         >>
         
-        <<
-        \new GrandStaff = "tab" \with {
+        \new StaffGroup = "tab" \with {
           systemStartDelimiter = #'SystemStartBar
           \override SystemStartBar #'thickness = #5
           \override SystemStartBar #'X-offset = #-1
@@ -371,14 +382,9 @@ evenFooterMarkup = \oddFooterMarkup
         >>
       >>
     >>
-  >>
-      %% Layout
+%% Layout
       \layout {
         indent = 0\cm
-        \context { 
-          \Staff \RemoveEmptyStaves
-          \override VerticalAxisGroup #'remove-first = ##t
-        }
         \context {
           \Staff
           \override TimeSignature #'space-alist #'first-note = #'(extra-space .
