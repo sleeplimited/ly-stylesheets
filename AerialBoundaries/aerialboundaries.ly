@@ -131,7 +131,7 @@ evenFooterMarkup = \oddFooterMarkup
   \include "vibrato.ly"
 % Standard Notation
 %% Upper
-  upper = {
+  upper-I = {
     \set Staff.midiInstrument = #"vibraphone"
     \override TupletNumber #'text = \markup { \sans "3" }
     \override TupletNumber #'font-shape = #'upright
@@ -169,6 +169,20 @@ evenFooterMarkup = \oddFooterMarkup
     \xNote < a e' >[ \xNote < g d'> < a e'> r16]
     < a e'>[ r16 \xNote < a e'> \xNote < g d'>] 
     \xNote < a e'>[ \xNote < g d'> \xNote < a e'> < g d'>] | 
+  }
+%% Upper-II
+  upper-II = {
+    \set Staff.midiInstrument = #"vibraphone"
+    \override TupletNumber #'text = \markup { \sans "3" }
+    \override TupletNumber #'font-shape = #'upright
+    \override TupletNumber #'font-size = #'-1
+    \override TupletBracket #'thickness = #'1
+    \override TupletBracket #'bracket-visibility = ##t
+    \override Staff.Stem #'stemlet-length = #0.75
+    \set Score.tempoHideNote = ##t
+    \tempo 4 = 88
+    \override Score.TimeSignature #'stencil = ##f
+    
     % Bar 5
     < a e'>16[ r16 < a e'>16 r16]
     \xNote < a e' >[ \xNote < g d'> < a e'> r16]
@@ -181,7 +195,7 @@ evenFooterMarkup = \oddFooterMarkup
     \xNote < a e'>[ \xNote < g d'> \xNote < a e'> < g d'>] | 
   }
 %% Lower
-  lower = {
+  lower-II = {
     \set Staff.midiInstrument = #"vibraphone"
     \numericTimeSignature
     \override TupletNumber #'text = \markup { \sans "3" }
@@ -190,7 +204,6 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletBracket #'thickness = #'1
     \override TupletBracket #'bracket-visibility = ##t
     \key c \major
-    s1 s1 s1 s1 
     % Bar 5
     \clef "treble_8"
     c16 d8.~ d2.~ |
@@ -200,7 +213,7 @@ evenFooterMarkup = \oddFooterMarkup
   }
 % Tab
 %% Tab I
-  tab = {
+  tabI-I = {
     \set Staff.midiInstrument = #"vibraphone"
     \numericTimeSignature
     \time 4/4
@@ -243,6 +256,30 @@ evenFooterMarkup = \oddFooterMarkup
     < a\3 e'>16^\repeatTie[ < g d'> < a\3 e'>^\repeatTie r16]
     < a\3 e'>16^\repeatTie[ r16 < a\3 e'>^\repeatTie < g d'>]
     < a\3 e'>16^\repeatTie[ < g d'> < a\3 e'>^\repeatTie < g d'>] |
+
+
+  }
+  tab-I-II = {
+    \override Beam #'damping = #100000
+    \override TabNoteHead #'whiteout = ##t
+    \tabFullNotation
+    \stemDown
+    \override Rest #'font-size = #2 
+    \override TabStaff.TimeSignature #'stencil = ##f
+    \override TabStaff.TimeSignature #'transparent = ##t
+    \override TabStaff.TabNoteHead #'font-name = #"Helvetica"
+    \override Staff.Stem #'stemlet-length = #2.75
+    \override BreathingSign #'extra-offset = #'(0.5 . -2.0)
+    \override TupletBracket #'thickness = #'1
+    \override TupletNumber #'text = \markup { \sans "3" }
+    \override TupletNumber #'font-shape = #'upright
+    \override TupletNumber #'font-size = #'-1
+    \override TupletBracket #'edge-height = #'(0.5 . 0.5)
+    \override TupletBracket #'extra-offset = #'(0 . -0.1)
+    \override Score.BarNumber #'extra-offset = #'(1.5 . -17.8)
+    \override Score.BarNumber #'font-family = #'sans
+    \override Score.BarNumber #'font-size = #'-6
+
     % Bar 5
     < a\3 e'>16^\repeatTie[ r16 < a\3 e'>^\repeatTie r16] 
     < a\3 e'>16^\repeatTie[ < g d'> < a\3 e'>^\repeatTie r16]
@@ -255,21 +292,16 @@ evenFooterMarkup = \oddFooterMarkup
     < a\3 e'>16^\repeatTie[ < g d'> < a\3 e'>^\repeatTie < g d'>] |
     \pageBreak
     s1
-
-
   }
 %% Tab II
   tabII = {
-    R1 R1 R1 R1
-    
     \set Staff.midiInstrument = #"vibraphone"
     \override Beam #'damping = #100000
     \override TabNoteHead #'whiteout = ##t
     \tabFullNotation
     \stemDown
     \override Rest #'font-size = #2 
-    \override TabStaff.TimeSignature #'font-size = #5
-    \once\override Staff.TimeSignature #'X-offset = #'-1
+    \override TabStaff.TimeSignature #'stencil = ##f
     \override TabStaff.TabNoteHead #'font-name = #"Helvetica"
     \override Staff.Stem #'stemlet-length = #2.75
     \override BreathingSign #'extra-offset = #'(0.5 . -2.0)
@@ -337,7 +369,6 @@ evenFooterMarkup = \oddFooterMarkup
     \tabFullNotation
   }
 % Score
-  \book {
     \score {
       <<
         \new GrandStaff = "tab with traditional" \with {
@@ -349,19 +380,10 @@ evenFooterMarkup = \oddFooterMarkup
         }  <<
           \new Staff = "guitar traditional" <<
             \clef "treble_8"
-            \context Voice = "upper" \upper
-          >>
-          \new Staff = "guitar Traditional bass" <<
-            \clef "bass_8"
-            \context Voice = "lower" \lower
+            \context Voice = "upper-I" \upper-I
           >>
         >>
         
-        \new StaffGroup = "tab" \with {
-          systemStartDelimiter = #'SystemStartBar
-          \override SystemStartBar #'thickness = #5
-          \override SystemStartBar #'X-offset = #-1
-        } <<
         \new TabStaff = "guitar tab" 
           <<
           \clef "moderntabII"
@@ -369,19 +391,13 @@ evenFooterMarkup = \oddFooterMarkup
           \new TabVoice = "dynamicsone" \dynamicsone
           \new TabVoice = "dynamicstwo" \dynamicstwo
           \new TabVoice = "dynamicsthree" \dynamicsthree
-          \new TabVoice = "tab" \tab
+          \new TabVoice = "tabI-I" \tabI-I
           \new TabVoice = "dynamicsfour" \dynamicsfour 
           \new TabVoice = "dynamicsfive" \dynamicsfive  
           \new TabVoice = "dynamicssix" \dynamicssix
           \new TabVoice = "sixstr" \sixstr
         >>
-        \new TabStaff = "guitar tab II"
-        <<
-          \set Staff.stringTunings = \stringTuning <c, c d g a d'>
-          \new TabVoice = "tabII" \tabII
-        >>
       >>
-    >>
 %% Layout
       \layout {
         indent = 0\cm
@@ -398,4 +414,62 @@ evenFooterMarkup = \oddFooterMarkup
 
 
     }
+% Score II
+    \score {
+    <<
+        \new GrandStaff = "tab with traditional" \with {
+          systemStartDelimiter = #'SystemStartBar
+          \override SystemStartBar #'thickness = #5
+          \override SystemStartBar #'X-offset = #-1
+          \override StaffSymbol #'staff-space = #(magstep -2)
+          fontSize = #-2
+        }  <<
+          \new Staff = "guitar traditional" <<
+            \clef "treble_8"
+            \context Voice = "upper-II" \upper-II
+          >>
+          \new Staff = "guitar Traditional bass" <<
+            \clef "bass_8"
+            \context Voice = "lower-II" \lower-II
+          >>
+        \new StaffGroup = "tab" \with {
+          systemStartDelimiter = #'SystemStartBar
+          \override SystemStartBar #'thickness = #5
+          \override SystemStartBar #'X-offset = #-1
+        } <<
+        \new TabStaff = "guitar tab" 
+          <<
+          \clef "moderntabII"
+          \set Staff.stringTunings = \stringTuning <c, c d g a d'>
+          \new TabVoice = "dynamicsone" \dynamicsone
+          \new TabVoice = "dynamicstwo" \dynamicstwo
+          \new TabVoice = "dynamicsthree" \dynamicsthree
+          \new TabVoice = "tab-I-II" \tab-I-II
+          \new TabVoice = "dynamicsfour" \dynamicsfour 
+          \new TabVoice = "dynamicsfive" \dynamicsfive  
+          \new TabVoice = "dynamicssix" \dynamicssix
+          \new TabVoice = "sixstr" \sixstr
+        >>
+        \new TabStaff = "guitar tab II"
+        <<
+          \set Staff.stringTunings = \stringTuning <c, c d g a d'>
+          \new TabVoice = "tabII" \tabII
+        >>
+      >>
+    >>
+  >>
+      \layout {
+        indent = 0\cm
+        \context {
+          \Staff
+          \override TimeSignature #'space-alist #'first-note = #'(extra-space .
+          4.9) }
+        \context {
+      \TabStaff
+      \override Clef #'stencil = #clef::print-modern-custom-tab-if-set
+    }
+      }
+      \midi {}
+
   }
+  
