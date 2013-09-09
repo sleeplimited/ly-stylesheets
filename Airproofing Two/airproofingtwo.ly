@@ -29,10 +29,10 @@ __..           .           ,      .
 \pointAndClickOff
 % header
 \header {
-  title = \markup { \sans \bold \fontsize #3 "Hot Type" }
-  composer = \markup { \sans \fontsize #-1 "Michael Hedges" }
-  poet = \markup { \concat { \sans \fontsize #-2 { A\fontsize #-5 {1}" "B\fontsize
-  #-5 {2}" "E\fontsize #-5 {3}" "F\raise #0.6 \fontsize #-5 \sharp\fontsize #-5 {3}" "A\fontsize #-5 {3}" "D\fontsize #-5
+  title = \markup { \sans \bold \fontsize #3 "Airproofing Two" }
+  composer = \markup { \sans \fontsize #-1 "Leo Kottke" }
+  poet = \markup { \concat { \sans \fontsize #-2 { E\fontsize #-5 {2}" "A\fontsize
+  #-5 {2}" "D\fontsize #-5 {3}" "G\fontsize #-5 {3}" "B\fontsize #-5 {3}" "E\fontsize #-5
   {4} }}}
   meter = \markup { " " }
   copyright = \markup { 
@@ -41,8 +41,9 @@ __..           .           ,      .
       \line { 
         \concat { 
           \fontsize #-3 { 
-            \char ##x00a9 "1984 Naked Ear Music (BMI) and Imaginary Road Music"
-            " (BMI)/Administered by Imaginary Road Music (BMI)." 
+            \char ##x00a9 "1976 Round Wound Sound Music, Inc."
+            " (BMI)/Administered by Bug Music, Inc.  All rights reserved.  Used"
+            " by permission."
           } 
         } 
       } 
@@ -50,9 +51,9 @@ __..           .           ,      .
         \raise #1
         \concat { 
           \fontsize #-3 { 
-            \hspace #35 Transcription " " \char ##x00a9 " 1995 Stropes Editions,"
+            \hspace #35 Transcription " " \char ##x00a9 " 1997 Stropes Editions,"
             " Ltd." 
-             \hspace #20 \normal-size-sub { "Hot Type 5/10/96 1/12" }
+             \hspace #20 \normal-size-sub { "Airproofing 7/6/97 1/26" }
           }
         }
       } 
@@ -68,7 +69,6 @@ __..           .           ,      .
   right-margin = 0.6\in
   top-margin = 0.5\in
   bottom-margin = 0.5\in
-  max-systems-per-page = 3
   myStaffSize = #20
   #(define fonts
   (make-pango-font-tree "Times New Roman"
@@ -97,7 +97,7 @@ __..           .           ,      .
       % page-number not on first-page 
       \on-the-fly #not-first-page 
       % page-number not on last-page 
-      \concat { \sans \fontsize #-3 { "Hot Type 5/10/96 " \fromproperty #'page:page-number-string /12
+      \concat { \sans \fontsize #-3 { "Airproofing Two 7/6/97 " \fromproperty #'page:page-number-string /12
     }  }
     % copyright on first page 
     \on-the-fly #first-page \fromproperty #'header:copyright 
@@ -112,7 +112,7 @@ evenFooterMarkup = \oddFooterMarkup
   \context {
     \Score
     \override StaffGrouper #'staffgroup-staff-spacing =
-    #'((basic-distance . 12)
+    #'((basic-distance . 15)
     (padding . -10)
     (stretchability . 0))
     }
@@ -133,8 +133,45 @@ evenFooterMarkup = \oddFooterMarkup
     \numericTimeSignature
     \time 4/4
     \set Score.tempoHideNote = ##t
-    \tempo 4 = 88
-    \key g \major
+    \tempo 2 = 112
+    \override Score.RehearsalMark #'break-align-symbols = #'(time-signature)
+    \once \override Score.TimeSignature #'break-align-anchor = #2.3
+    \once \override Score.RehearsalMark #'extra-offset = #'(0 . 2)
+    \mark \markup  { \fontsize #-4 \concat {
+      \fontsize #0 { \note #"2" #1 }" =" \fontsize #-4 \number " 112"
+    }}
+    \key a \major
+    \voiceOne
+      \set Timing.baseMoment = #(ly:make-moment 1 4)
+      \set Timing.beatStructure = #'(1 1 1 1)
+      \set Timing.beamExceptions = #'()
+    \partial 8
+    e8
+    % Bar 1
+    g4 \parenthesize a8 r8 g8 < e \parenthesize a>4 g8~ |
+    % Bar 2
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 3
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 4
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 5
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 6
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 7
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 8
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 9
+    g8 a4 d8 a8 d4 a8~ |
+    % Bar 10
+    a8 d4 d8 a8 d8 r8 g8~ |
+    % Bar 11
+    g8 e \parenthesize a e g < e \parenthesize a>4 g8~ |
+    % Bar 12
+    g8
+
 
   }
 %% Lower
@@ -146,7 +183,36 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletNumber #'font-size = #'-1
     \override TupletBracket #'thickness = #'1
     \override TupletBracket #'bracket-visibility = ##t
-    \key g \major
+    \key a \major
+    \voiceTwo
+      \set Timing.baseMoment = #(ly:make-moment 1 4)
+      \set Timing.beatStructure = #'(1 1 1 1)
+      \set Timing.beamExceptions = #'()
+    \partial 8
+    s8
+    % Bar 1
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 2
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 3
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 4
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 5
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 6
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 7
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 8
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 9
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 10
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+    % Bar 11
+    a,4 fis,8 r8 e,8 r8 fis,8 r8 |
+
 
   }
 % Tab
@@ -155,11 +221,12 @@ evenFooterMarkup = \oddFooterMarkup
     \key g \major
     \numericTimeSignature
     \time 4/4
-    \override Beam #'damping = #100000
+    \override Beam #'damping = #3
     \override TabNoteHead #'whiteout = ##t
     \tabFullNotation
     \stemDown
     \override Rest #'font-size = #2 
+    \override TabStaff.TimeSignature #'X-offset = #-1
     \override TabStaff.TimeSignature #'font-size = #5
     \override TabStaff.TabNoteHead #'font-name = #"Helvetica"
     \override Staff.Stem #'stemlet-length = #2.75
@@ -170,9 +237,140 @@ evenFooterMarkup = \oddFooterMarkup
     \override TupletNumber #'font-size = #'-1
     \override TupletBracket #'edge-height = #'(0.5 . 0.5)
     \override TupletBracket #'extra-offset = #'(0 . -0.1)
-    \override Score.BarNumber #'extra-offset = #'(1.5 . -17.8)
+    \override Score.BarNumber #'extra-offset = #'(1.5 . -9.8)
     \override Score.BarNumber #'font-family = #'sans
     \override Score.BarNumber #'font-size = #'-6
+    \set Timing.baseMoment = #(ly:make-moment 1 4)
+    \set Timing.beatStructure = #'(1 1 1 1)
+    \set Timing.beamExceptions = #'()
+      \partial 8
+      \override TabStaff.Slur #'thickness = #'0.08
+      < e \parenthesize cis'>8 
+      % Bar 1
+      \once\override TabStaff.Slur #'control-points = 
+      #'((1.2 . 1.2) (3.2 . 2.2) (6.2 . 2.2) (8 . 1.2))
+      \slurDashed < g a,>4( 
+      < fis, \parenthesize a\3>8)
+      r8
+      \once\override TabStaff.Slur #'control-points = 
+      #'((1.2 . 1.3) (2.3 . 1.8) (3.3 . 1.8) (4.3 . 1.3))
+      < e, g>(
+      < \parenthesize fis, e \parenthesize a >)
+      fis,
+      \once\override TabStaff.Slur #'control-points = 
+      #'((1.2 . 1.2) (6.2 . 2.2) (11 . 2.2) (16 . 1.2))
+      \slurDashed g(
+      |
+      % Bar 2
+      a,
+      e
+      < fis, \parenthesize a>)
+      e
+      \once\override TabStaff.Slur #'control-points = 
+      #'((1.2 . 1.3) (2.3 . 1.8) (3.3 . 1.8) (4.3 . 1.3))
+      < e, g>(
+      < \parenthesize fis, e \parenthesize a>)
+      fis,
+      \once\override TabStaff.Slur #'control-points = 
+      #'((1.2 . 1.2) (6.2 . 2.2) (11 . 2.2) (16 . 1.2))
+      g(
+      |
+      \break
+      % Bar 3
+      a,
+      e
+      < fis, \parenthesize a>)
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      % Bar 4
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      % Bar 5
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      \break
+      % Bar 6
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      % Bar 7
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      % Bar 8
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g
+      |
+      \break
+      % Bar 9
+      a,8
+      a
+      fis,
+      d
+      < e, a>
+      < \parenthesize fis, d>
+      fis,
+      a
+      |
+      % Bar 10
+      a,
+      d
+      fis,
+      d
+      < e, a>
+      < \parenthesize fis, d>
+      < fis, \parenthesize e \parenthesize cis' >
+      g
+      |
+      % Bar 11
+      a,
+      e
+      < fis, \parenthesize a>
+      e
+      < e, g>
+      < \parenthesize fis, e \parenthesize a>
+      fis,
+      g 
+      |
+      \pageBreak
+
+
 
   }
 % Dynamics
@@ -235,16 +433,13 @@ evenFooterMarkup = \oddFooterMarkup
           \new Staff = "guitar traditional" <<
             \clef "treble_8"
             \context Voice = "upper" \upper
-          >>
-          \new Staff = "guitar Traditional bass" <<
-            \clef "bass_8"
             \context Voice = "lower" \lower
           >>
         >>
         \new TabStaff = "guitar tab" 
         <<
           \clef "moderntabII"
-          \set Staff.stringTunings = \stringTuning <a,, b, e fis b e'>
+          \set Staff.stringTunings = \stringTuning <e, a, d g b e'>
           \new TabVoice = "dynamicsone" \dynamicsone
           \new TabVoice = "dynamicstwo" \dynamicstwo
           \new TabVoice = "dynamicsthree" \dynamicsthree
